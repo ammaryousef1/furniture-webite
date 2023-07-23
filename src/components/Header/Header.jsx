@@ -5,7 +5,7 @@ import {motion} from 'framer-motion'
 import userIcon from '../../assets/images/user-icon.png'
 import './Header.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { signUpWithGoogle } from '../SignInWithGoogle'
+
 
 const nav__links = [
     {
@@ -24,13 +24,13 @@ const nav__links = [
 
 
 const Header = () => {
-    const currentuser = useSelector(state => state.user.user)
+
     const navigate = useNavigate()
     const headerRef = useRef(null)
     const menuRef = useRef(null)
     const totalQuantity = useSelector(state => state.cart.totalQuantity)
     const  [user , setUser] = useState(false)
-    const dispatch = useDispatch();
+
 
     const stickyHeaderFunc = () =>{
         window.addEventListener('scroll' , ()=> {
@@ -54,12 +54,7 @@ const Header = () => {
     }
 
        
-        
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            dispatch(signUpWithGoogle());
-        };
-        
+      
     
         
 
@@ -100,19 +95,7 @@ const Header = () => {
 
                      
                        
-                            <div  className='profile'>
-                               <motion.img whileTap={{scale: 1.2}} src={ currentuser ? currentuser.photoURL  : userIcon } alt=''  onClick={() => setUser(!user)} />
-                           
-                            
-                            <div className='profile__actions'>
-                             {
-                                user ?  <div > 
-                                            <span>{ currentuser ?  <div></div> : <div className='title' onClick={handleSubmit}>create Account</div> }</span>
-                                        </div>
-                                    :  ''
-                             }
-                          </div>
-                          </div>
+                         
                      
                       
                        <div className="mobile__menu">
